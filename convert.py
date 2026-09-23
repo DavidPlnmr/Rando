@@ -10,17 +10,40 @@ except DataSourceError:
     sys.exit(1)
 
 # Distance en kilomètres
-routes["distance_km"] = routes["LaengeR"] / 1000
+routes["distance_km"] = (routes["LaengeR"] / 1000).round(1)
 
-# Lien SwitzerlandMobility
-routes["swissmobility_link"] = routes.apply(
-    lambda row: f"https://schweizmobil.ch/fr/suisse-a-pied/itineraire-{row['NrR']}", axis=1
-)
+# Garder uniquement les données nécessaires à l'application
+colonnes = [
+    "NrR",
+    "NameR",
+    "TechnikR",
+    "KonditionR",
+    "distance_km",
+    "AOrt",
+    "ZOrt",
+    "HoeheAufR",
+    "HoeheAbR",
+    "HoeheMaxR",
+    "geometry"
+]
 
-# Conversion LV95 -> WGS84 pour Leaflet
+colonnes = [col for col in colonnes if col in routes.columns]
+
+routes = routes[colonnes]
+
+# Simplifier les tracés avec une tolérance de 5 mètres
+# routes["geometry"] = routes.geometry.simplify(
+#     tolerance=5,
+#     preserve_topology=True
+# )
+
+# LV95 -> WGS84
 routes = routes.to_crs(epsg=4326)
 
 # Export
-routes.to_file("routes.geojson", driver="GeoJSON")
+routes.to_file(
+    "routes.geojson",
+    driver="GeoJSON"
+)
 
 print(f"{len(routes)} itinéraires exportés.")

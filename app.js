@@ -515,11 +515,10 @@ function afficherRoutes(features) {
 
                         const lienSwissMobility =
 
-                            p.swissmobility_link
+                            p.NrR
+                            
 
-
-                            ? `<a href="
-                                ${p.swissmobility_link}"
+                            ? `<a href="https://schweizmobil.ch/fr/suisse-a-pied/itineraire-${p.NrR}"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
