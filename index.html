@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Randonnées Suisse</title>
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <!-- Notre CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================================
+         FILTRES
+    ====================================================== -->
+
+    <div id="controls">
+
+        <div class="control-group">
+
+            <label for="distanceMax">
+                Distance max
+            </label>
+
+            <input
+                id="distanceMax"
+                type="number"
+                value="20"
+                min="0"
+                step="1"
+            >
+
+            <span>km</span>
+
+        </div>
+
+
+        <div class="control-group">
+
+            <label for="deniveleMax">
+                D+ max
+            </label>
+
+            <input
+                id="deniveleMax"
+                type="number"
+                value="1000"
+                min="0"
+                step="100"
+            >
+
+            <span>m</span>
+
+        </div>
+
+
+        <div class="control-group">
+
+            <label for="technique">
+                Technique
+            </label>
+
+            <select id="technique">
+
+                <option value="">
+                    Toutes
+                </option>
+
+                <option value="leicht">
+                    Facile
+                </option>
+
+                <option value="mittel">
+                    Moyenne
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="control-group">
+
+            <label for="condition">
+                Condition physique
+            </label>
+
+            <select id="condition">
+
+                <option value="">
+                    Toutes
+                </option>
+
+                <option value="leicht">
+                    Facile
+                </option>
+
+                <option value="mittel">
+                    Moyenne
+                </option>
+
+                <option value="schwer">
+                    Difficile
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            id="btn-filtrer"
+            type="button"
+        >
+            Filtrer
+        </button>
+
+
+        <button
+            id="btn-reset"
+            type="button"
+        >
+            Tout afficher
+        </button>
+
+
+        <span id="resultat">
+            Chargement...
+        </span>
+
+    </div>
+
+
+    <!-- =====================================================
+         CARTE
+    ====================================================== -->
+
+    <div id="map"></div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <!-- Leaflet -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+    <!-- Notre application -->
+    <script
+        src="app.js"
+    ></script>
+
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+/venv
+/*_shape_wanderland
+*.shp.zip
+#routes.geojson
+
+# MacOS
+.DS_Store
