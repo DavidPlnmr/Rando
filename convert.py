@@ -31,11 +31,11 @@ colonnes = [col for col in colonnes if col in routes.columns]
 
 routes = routes[colonnes]
 
-# Simplifier les tracés avec une tolérance de 5 mètres
-# routes["geometry"] = routes.geometry.simplify(
-#     tolerance=5,
-#     preserve_topology=True
-# )
+# Simplifier les tracés avec une tolérance de 2 mètres
+routes["geometry"] = routes.geometry.simplify(
+    tolerance=2,
+    preserve_topology=True
+)
 
 # LV95 -> WGS84
 routes = routes.to_crs(epsg=4326)
